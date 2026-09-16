@@ -402,14 +402,6 @@ async function callClaude(promptText) {
   const data = await response.json();
   return data.text;
 }
-  if (!response.ok) throw new Error("Falha ao consultar a IA (" + response.status + ")");
-  const data = await response.json();
-  const text = data.content
-    .filter(item => item.type === "text")
-    .map(item => item.text)
-    .join("\n");
-  return text;
-}
 
 function parseJsonSafely(raw) {
   const cleaned = raw.replace(/```json/gi, "").replace(/```/g, "").trim();
